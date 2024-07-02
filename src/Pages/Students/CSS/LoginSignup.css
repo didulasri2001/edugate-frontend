@@ -42,6 +42,7 @@
 }
 .role {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #f9f9f7;
@@ -54,4 +55,59 @@
   border-radius: 10px;
   padding: 0.5rem 1rem;
   margin: 1rem;
+}
+.role img {
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+.continue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+.continue button {
+  background-color: #f6cb52;
+  color: #000000;
+  border: none;
+  border-radius: 30px;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+.dotts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+.dotts span {
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: #d9d9d9;
+  border-radius: 50%;
+  margin: 0.3rem;
+}
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.25rem;
+}
+.socials img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.5rem;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+.footer span {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #000000;
 }
