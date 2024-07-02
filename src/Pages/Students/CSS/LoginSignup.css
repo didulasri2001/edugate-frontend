@@ -64,6 +64,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 3.98rem;
 }
 .continue button {
   background-color: #f6cb52;
@@ -80,7 +81,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
 }
 .dotts span {
   width: 0.6rem;
