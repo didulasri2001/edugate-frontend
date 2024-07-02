@@ -15,20 +15,27 @@ function LoginSignUp() {
   const [tutorBgColor, setTutorBgColor] = useState("#f9f9f7");
   const [currentDot, setCurrentDot] = useState(0);
   const [showLogin, setShowLogin] = useState(false);
+  const [selectedRole, setSelectedRole] = useState("");
 
   const handleStudentClick = () => {
     return (
+      setSelectedRole("student"),
       setStudentBgColor(studentBgColor === "#f9f9f7" ? "#F6CB52" : "#f9f9f7"),
       setTutorBgColor("#f9f9f7")
     );
   };
   const handleTutorClick = () => {
     return (
+      setSelectedRole("tutor"),
       setTutorBgColor(tutorBgColor === "#f9f9f7" ? "#F6CB52" : "#f9f9f7"),
       setStudentBgColor("#f9f9f7")
     );
   };
   const handleContinueClick = () => {
+    if (!selectedRole) {
+      alert("Please select a role");
+      return;
+    }
     setCurrentDot(1);
     setShowLogin(true);
   };
