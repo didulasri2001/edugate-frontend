@@ -1,0 +1,57 @@
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: #7fb4d7;
+  height: 100vh;
+  width: "100%";
+  overflow: hidden;
+}
+.leftContainer {
+  flex: 1;
+
+  justify-content: center;
+  align-items: center;
+}
+.rightContainer {
+  flex: 1;
+
+  background-color: #f9f9f7;
+  margin: 2.5rem 4rem 2.5rem 12rem;
+
+  border-radius: 30px;
+}
+.logoContainer {
+  margin-top: -1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logoContainer img {
+  width: 21.313rem;
+  height: 12.438rem;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.innerContainer p {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: 8rem;
+}
+.role {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f7;
+  width: 8rem;
+  height: 8rem;
+
+  border-width: 3px;
+  border-color: #f6cb52;
+  border-style: solid;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+}
