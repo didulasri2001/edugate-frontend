@@ -45,7 +45,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f9f9f7;
+  /* background-color: #f9f9f7; */
   width: 8rem;
   height: 8rem;
 
@@ -64,7 +64,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1.5rem;
 }
 .continue button {
   background-color: #f6cb52;
@@ -75,17 +74,18 @@
   font-size: 1rem;
   font-weight: 400;
   cursor: pointer;
+  margin-top: 1.5rem;
 }
 .dotts {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 4rem;
+  margin-top: 1.5rem;
 }
 .dotts span {
   width: 0.6rem;
   height: 0.6rem;
-  background-color: #d9d9d9;
+
   border-radius: 50%;
   margin: 0.3rem;
 }
@@ -110,4 +110,87 @@
   font-size: 0.8rem;
   font-weight: 400;
   color: #000000;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signin {
+  margin-left: 6rem;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.inputContainer input {
+  background-color: #f9f9f7;
+  font-size: 1.25rem;
+
+  margin-top: 1rem;
+  padding-left: 5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  width: 20rem;
+  height: 3rem;
+  border-radius: 20px;
+  margin-bottom: 0.25rem;
+  margin-right: 1rem;
+}
+.inputContainer img {
+  position: absolute;
+
+  width: 1.5rem;
+  padding-top: 0.5rem;
+  height: 1.5rem;
+  margin-top: 0rem;
+  margin-left: -22rem;
+}
+
+.inputContainer .eye {
+  margin-top: 0.5rem;
+  margin-left: 20rem;
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.forgetPassword {
+  margin-left: 23.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.loginButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.loginButton button {
+  background-color: #f6cb52;
+  color: #000000;
+  border: none;
+  border-radius: 30px;
+  padding: 0.75rem 3rem;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+.registration {
+  width: 16rem;
+  height: 1rem;
+  padding-left: 0.5rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.6rem;
+  border-width: 3px;
+  border-color: #f6cb52;
+  border-style: solid;
+  margin-top: 1rem;
+  margin-left: 6.3rem;
+  cursor: pointer;
+}
+.registration span {
+  font-family: poppins;
 }
