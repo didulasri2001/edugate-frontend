@@ -1,7 +1,17 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import LoginSignUp from "./Pages/Students/LoginSignUp";
+import Dashboard from "./Pages/Students/Dashboard";
 
 function App() {
-  return <div className="App">EduGate</div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginSignUp />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
