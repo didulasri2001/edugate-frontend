@@ -10,13 +10,19 @@ import whatsapp from "../../Components/Assets/whatsapp.png";
 import person from "../../Components/Assets/person.png";
 import lock from "../../Components/Assets/lock.png";
 import eye from "../../Components/Assets/eye.png";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 function LoginSignUp() {
   const [studentBgColor, setStudentBgColor] = useState("#f9f9f7");
   const [tutorBgColor, setTutorBgColor] = useState("#f9f9f7");
   const [currentDot, setCurrentDot] = useState(0);
   const [showLogin, setShowLogin] = useState(false);
   const [selectedRole, setSelectedRole] = useState("");
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
   const handleStudentClick = () => {
     return (
       setSelectedRole("student"),
@@ -39,6 +45,16 @@ function LoginSignUp() {
     setCurrentDot(1);
     setShowLogin(true);
   };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log("User logged in");
+      navigate("/dashboard"); // Redirect to dashboard
+    } catch (err) {
+      setError(err.message);
+    }
+  };
   return (
     <div className="mainContainer">
       <div className="leftContainer"></div>
@@ -53,17 +69,29 @@ function LoginSignUp() {
               <span className="signin">Sign In</span>
               <div className="inputContainer">
                 <img src={person} alt=""></img>
-                <input type="text" placeholder="Student ID" />
+                <input
+                  type="text"
+                  placeholder="Email Address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
               </div>
               <div className="inputContainer">
                 <img src={lock} alt=""></img>
-                <input type="password" placeholder="Password" />
-                <img className="eye" src={eye} alt=""></img>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                {/* <img className="eye" src={eye} alt=""></img> */}
               </div>
 
               <span className="forgetPassword">Forgot Password?</span>
               <div className="loginButton">
-                <button>Login</button>
+                <button onClick={handleLogin}>Login</button>
               </div>
 
               <div className="registration">
