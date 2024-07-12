@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.headerLogo img {
+  width: 9rem;
+  height: 5rem;
+  margin-left: 0.5rem;
+}
+.profile {
+  display: flex;
+  flex-direction: row;
+  margin-left: 50rem;
+  margin-right: 1rem;
+}
+.profile img {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+.profile p {
+  margin-top: 1.5rem;
+}
+.notifi img {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 2rem;
+  margin-top: 1.2rem;
+}
