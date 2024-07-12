@@ -1,6 +1,6 @@
 .dash {
   display: flex;
-
+  background-color: #f9f9f7;
   height: 100vh;
 }
 .right {

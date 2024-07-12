@@ -5,15 +5,21 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Attendence = ({ data }) => {
+const Attendence = ({ data, backgroungcolor }) => {
+  const totalAttendance = data.attendance[0];
+  const studentAttendance = data.attendance[1];
+  const studentAttendancePercentage =
+    (studentAttendance / totalAttendance) * 100;
+  const remainingPercentage = 100 - studentAttendancePercentage;
+
   const chartData = {
-    labels: ["Total Attendance", "Student Attendance"],
+    labels: ["", "Student Attendance"],
     datasets: [
       {
         label: "Attendance",
-        data: data.attendance,
-        backgroundColor: ["rgba(54, 162, 235, 0.2)", "rgba(255, 99, 132, 0.2)"],
-        borderColor: ["rgba(54, 162, 235, 1)", "rgba(255, 99, 132, 1)"],
+        data: [remainingPercentage, studentAttendancePercentage],
+        backgroundColor: ["rgba(249, 249, 247, 1)", backgroungcolor],
+        borderColor: [backgroungcolor, backgroungcolor],
         borderWidth: 1,
       },
     ],
@@ -28,7 +34,9 @@ const Attendence = ({ data }) => {
       tooltip: {
         callbacks: {
           label: function (tooltipItem) {
-            return tooltipItem.label + ": " + tooltipItem.raw;
+            const label = tooltipItem.label;
+            const value = tooltipItem.raw.toFixed(2) + "%";
+            return `${label}: ${value}`;
           },
         },
       },

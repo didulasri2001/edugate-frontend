@@ -28,9 +28,18 @@ function Dashboard() {
             </div>
             <p>Attendence</p>
             <div className="attendence">
-              <Attendence data={attendanceData} />
-              <Attendence data={attendanceData} />
-              <Attendence data={attendanceData} />
+              <Attendence
+                data={attendanceData}
+                backgroungcolor="rgba(127, 180, 215, 1)"
+              />
+              <Attendence
+                data={attendanceData}
+                backgroungcolor="rgba(166, 187, 170, 1)"
+              />
+              <Attendence
+                data={attendanceData}
+                backgroungcolor="rgba(206, 195, 126, 1)"
+              />
             </div>
           </div>
           <div className="right-right">
