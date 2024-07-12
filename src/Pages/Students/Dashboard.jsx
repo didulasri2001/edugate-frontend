@@ -6,7 +6,11 @@ import Banner from "../../Components/Banner/Banner";
 import EventCalendar from "../../Components/EventCalendar/EventCalendar";
 import Event from "../../Components/Event/Event";
 import ClassCard from "../../Components/ClassCard/ClassCard";
+import Attendence from "../../Components/AttendenceGraph/Attendence";
 function Dashboard() {
+  const attendanceData = {
+    attendance: [100, 60], // Example attendance data: [total attendance, student attendance]
+  };
   return (
     <div className="dash">
       <Navbar />
@@ -23,6 +27,11 @@ function Dashboard() {
               <ClassCard />
             </div>
             <p>Attendence</p>
+            <div className="attendence">
+              <Attendence data={attendanceData} />
+              <Attendence data={attendanceData} />
+              <Attendence data={attendanceData} />
+            </div>
           </div>
           <div className="right-right">
             <p>Calendar</p>
