@@ -1,0 +1,58 @@
+/* EventCalendar.css */
+.event-calendar {
+  width: 18rem;
+  margin-left: 1rem;
+  background-color: #ffffff; /* Custom background color for the calendar */
+  border: 1px solid #f6cb52;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow effect */
+}
+
+.react-calendar {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+}
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: white;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+}
+
+.react-calendar__navigation button {
+  color: black; /* Custom color for navigation buttons */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.react-calendar__navigation__label {
+  font-size: 1.2em;
+  font-family: poppins;
+}
+
+.react-calendar__tile--now {
+  background: #f6cb52 !important; /* Custom background color for today's date */
+  color: white !important;
+  border-radius: 50%;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #d9534f; /* Custom color for weekend days */
+}
+
+.react-calendar__tile:hover {
+  background: #f0f0f0; /* Custom hover color for tiles */
+}
+
+.react-calendar__tile {
+  padding: 10px; /* Adjust padding for tiles */
+  border-radius: 50px; /* Add border radius to tiles */
+  transition: background 0.3s ease; /* Smooth transition for background color changes */
+}
