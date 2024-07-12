@@ -5,6 +5,7 @@ import Header from "../../Components/Header/Header";
 import Banner from "../../Components/Banner/Banner";
 import EventCalendar from "../../Components/EventCalendar/EventCalendar";
 import Event from "../../Components/Event/Event";
+import ClassCard from "../../Components/ClassCard/ClassCard";
 function Dashboard() {
   return (
     <div className="dash">
@@ -16,6 +17,12 @@ function Dashboard() {
           <div className="right-left">
             <Banner />
             <p>Enrolled Courses</p>
+            <div className="courses">
+              <ClassCard />
+              <ClassCard />
+              <ClassCard />
+            </div>
+            <p>Attendence</p>
           </div>
           <div className="right-right">
             <p>Calendar</p>

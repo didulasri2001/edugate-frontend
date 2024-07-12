@@ -1,0 +1,48 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  width: 16.2rem;
+  height: 8rem;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 1rem;
+}
+.imgCon img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+.classDes {
+  display: flex;
+  flex-direction: column;
+}
+.classDes span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: poppins;
+  margin-left: 1rem;
+}
+.classDes p {
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-family: poppins;
+  margin-top: 0.5rem;
+}
+.viewClass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.viewClass button {
+  background-color: #f6cb52;
+  color: #000000;
+  border: none;
+  border-radius: 30px;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  cursor: pointer;
+  margin-left: -3rem;
+}
