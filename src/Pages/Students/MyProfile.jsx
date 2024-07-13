@@ -13,11 +13,19 @@ function MyProfile() {
     { value: "matara", label: "Matara" },
     // Add more districts as needed
   ];
-  const [firstName, setFirstName] = useState("");
 
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address1, setAddress1] = useState("");
+  const [address2, setAddress2] = useState("");
+  const [email, setEmail] = useState("");
+  const [nic, setNic] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [city, setCity] = useState("");
+  const [school, setSchool] = useState("");
+  const [pName, setPName] = useState("");
+  const [pNumber, setPNumber] = useState("");
+
   return (
     <div className="profileCon">
       <Navbar />
@@ -35,67 +43,42 @@ function MyProfile() {
           <InputBar
             label="First Name"
             value={firstName}
-            onChange={handleFirstNameChange}
+            onChange={(e) => setFirstName(e.target.value)}
             required={true}
           />
           <InputBar
-            label="First Name"
-            value={firstName}
-            onChange={handleFirstNameChange}
+            label="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             required={true}
           />
         </div>
         <div className="profiledetailsContainer">
           <div className="inputLine">
             <InputBar
-              label="First Name"
-              value={firstName}
-              onChange={handleFirstNameChange}
+              label="Address Line 1"
+              value={address1}
+              onChange={(e) => setAddress1(e.target.value)}
               required={true}
             />
             <InputBar
-              label="First Name"
-              value={firstName}
-              onChange={handleFirstNameChange}
+              label="Address Line 2"
+              value={address2}
+              onChange={(e) => setAddress2(e.target.value)}
               required={true}
             />
             <InputBar
-              label="First Name"
-              value={firstName}
-              onChange={handleFirstNameChange}
-              required={true}
-            />
-          </div>
-          <div className="inputLine">
-            <InputBar
-              label="First Name"
-              value={firstName}
-              onChange={handleFirstNameChange}
-              required={true}
-            />
-            <DropDownMenu options={options} label="District" />
-            <DropDownMenu options={options} label="District" />
-          </div>
-          <div className="inputLine">
-            <InputBar
-              label="First Name"
-              value={firstName}
-              onChange={handleFirstNameChange}
-              required={true}
-            />
-            <DropDownMenu options={options} label="District" />
-            <InputBar
-              label="First Name"
-              value={firstName}
-              onChange={handleFirstNameChange}
+              label="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required={true}
             />
           </div>
           <div className="inputLine">
             <InputBar
-              label="First Name"
-              value={firstName}
-              onChange={handleFirstNameChange}
+              label="NIC"
+              value={nic}
+              onChange={(e) => setNic(e.target.value)}
               required={true}
             />
             <DropDownMenu options={options} label="District" />
@@ -103,15 +86,40 @@ function MyProfile() {
           </div>
           <div className="inputLine">
             <InputBar
-              label="First Name"
-              value={firstName}
-              onChange={handleFirstNameChange}
+              label="Mobile Number"
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
+              required={true}
+            />
+            <DropDownMenu options={options} label="District" />
+            <InputBar
+              label="City"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required={true}
+            />
+          </div>
+          <div className="inputLine">
+            <InputBar
+              label="School"
+              value={school}
+              onChange={(e) => setSchool(e.target.value)}
+              required={true}
+            />
+            <DropDownMenu options={options} label="District" />
+            <DropDownMenu options={options} label="District" />
+          </div>
+          <div className="inputLine">
+            <InputBar
+              label="Parent's Name"
+              value={pName}
+              onChange={(e) => setPName(e.target.value)}
               required={true}
             />
             <InputBar
-              label="First Name"
-              value={firstName}
-              onChange={handleFirstNameChange}
+              label="Parent's Mobile"
+              value={pNumber}
+              onChange={(e) => setPNumber(e.target.value)}
               required={true}
             />
           </div>
@@ -121,4 +129,5 @@ function MyProfile() {
     </div>
   );
 }
+
 export default MyProfile;
