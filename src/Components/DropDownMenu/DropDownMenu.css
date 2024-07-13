@@ -1,0 +1,46 @@
+/* DistrictDropdown.css */
+.dropdown-container {
+  margin-left: 1.8rem;
+  margin-top: 0.5rem;
+  margin-right: 2rem;
+}
+
+.dropdown-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-family: poppins;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.required {
+  color: red;
+}
+
+.custom-select-wrapper {
+  position: relative;
+}
+
+.custom-select {
+  display: block;
+  width: 22rem;
+  height: 2.5rem;
+  padding: 8px;
+  font-size: 1rem;
+  border: 2px solid #cec37e;
+  border-radius: 10px;
+  outline: none;
+  background-color: #f9f9f7;
+  box-sizing: border-box;
+  font-family: poppins;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-position: right 10px center;
+}
+
+.custom-select option {
+  padding: 10px;
+}
