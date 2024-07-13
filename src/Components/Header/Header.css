@@ -10,7 +10,7 @@
 .profile {
   display: flex;
   flex-direction: row;
-  margin-left: 50rem;
+  margin-left: 45rem;
   margin-right: 1rem;
 }
 .profile img {

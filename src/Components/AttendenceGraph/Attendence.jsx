@@ -1,11 +1,11 @@
 import React from "react";
 import "./Attendence.css";
 import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
-const Attendence = ({ data, backgroungcolor }) => {
+const Attendence = ({ data, backgroungcolor, subject }) => {
   const totalAttendance = data.attendance[0];
   const studentAttendance = data.attendance[1];
   const studentAttendancePercentage =
@@ -13,7 +13,7 @@ const Attendence = ({ data, backgroungcolor }) => {
   const remainingPercentage = 100 - studentAttendancePercentage;
 
   const chartData = {
-    labels: ["", "Student Attendance"],
+    labels: ["", "Your Attendance"], // Keep only "Your Attendance" label
     datasets: [
       {
         label: "Attendance",
@@ -30,6 +30,12 @@ const Attendence = ({ data, backgroungcolor }) => {
     plugins: {
       legend: {
         position: "bottom",
+        labels: {
+          filter: function (legendItem) {
+            // Only show the "Your Attendance" label
+            return legendItem.text === "Your Attendance";
+          },
+        },
       },
       tooltip: {
         callbacks: {
@@ -42,7 +48,14 @@ const Attendence = ({ data, backgroungcolor }) => {
       },
       title: {
         display: true,
-        text: "Student Attendance",
+        text: subject, // Set the title to "Chemistry"
+        font: {
+          size: 16, // Customize the font size
+        },
+        padding: {
+          top: 10,
+          bottom: 10,
+        },
       },
     },
   };
