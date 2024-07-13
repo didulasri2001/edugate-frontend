@@ -1,0 +1,48 @@
+.dash {
+  display: flex;
+  background-color: #f9f9f7;
+  height: 100vh;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+}
+.right-left {
+  display: flex;
+  flex-direction: column;
+}
+.rights {
+  display: flex;
+  flex-direction: row;
+}
+.right-right {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+.right-right p {
+  margin-left: 1rem;
+  margin-top: -0.1rem;
+}
+.right-left p {
+  margin-left: 1rem;
+}
+.courses {
+  display: flex;
+  flex-direction: row;
+}
+.attendence {
+  display: flex;
+  flex-direction: row;
+}
+.bottom-Line {
+  display: flex;
+  flex-direction: row;
+}
+.AttendenceCon {
+  display: flex;
+  flex-direction: column;
+}
+.PerfermanceCon {
+  margin-left: 1rem;
+}

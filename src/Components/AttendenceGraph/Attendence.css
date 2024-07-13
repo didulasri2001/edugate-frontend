@@ -1,0 +1,7 @@
+.graph-container {
+  width: 210px; /* Adjust the width as needed */
+  height: 210px; /* Adjust the height as needed */
+
+  margin: -30px; /* Add margin for space around the container */
+  padding: 20px 15px 10px;
+}

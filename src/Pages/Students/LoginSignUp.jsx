@@ -9,7 +9,7 @@ import instagram from "../../Components/Assets/instagram.png";
 import whatsapp from "../../Components/Assets/whatsapp.png";
 import person from "../../Components/Assets/person.png";
 import lock from "../../Components/Assets/lock.png";
-import eye from "../../Components/Assets/eye.png";
+
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
