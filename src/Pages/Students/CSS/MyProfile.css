@@ -1,0 +1,80 @@
+.profileCon {
+  display: flex;
+  background-color: #f9f9f7;
+  height: 100vh;
+}
+.rightCon {
+  display: flex;
+  flex-direction: column;
+}
+.headerTitle {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+  width: 76rem;
+  height: 3rem;
+  background: linear-gradient(to right, #7fb4d7, #f6cb52);
+  border-radius: 10px;
+  margin-top: -0.5rem;
+}
+.headerTitle p {
+  margin-left: 1rem;
+  margin-top: 0.6rem;
+  font-family: poppins;
+  color: #f9f9f7;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.profImage {
+  display: flex;
+  flex-direction: row;
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+.profImage img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+.profImageDes {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+  margin-right: 7.2rem;
+}
+.profImageDes p {
+  font-family: poppins;
+  margin-top: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+.profImageDes button {
+  flex-direction: row;
+  background-color: #f6cb52;
+  color: black;
+  border: none;
+  font-size: 1rem;
+  font-family: poppins;
+  font-weight: 500;
+  width: 6rem;
+  height: 2rem;
+  cursor: pointer;
+}
+.inputLine {
+  display: flex;
+  flex-direction: row;
+}
+.updateButton button {
+  background-color: #f6cb52;
+  color: black;
+  border: none;
+  font-size: 1rem;
+  font-family: poppins;
+  font-weight: 500;
+  width: 12rem;
+  height: 2.5rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  padding: 0.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
