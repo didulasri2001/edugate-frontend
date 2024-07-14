@@ -12,7 +12,15 @@ import lock from "../../Components/Assets/lock.png";
 
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, updatePassword } from "firebase/auth";
+import { functions } from "../../firebase"; // Adjust the path according to your project structure
+import { httpsCallable } from "firebase/functions";
+//
+// import admin from "firebase-admin"; // Import Firebase Admin SDK
+
+// // Initialize Firebase Admin SDK
+// admin.initializeApp();
+
 function LoginSignUp() {
   const [studentBgColor, setStudentBgColor] = useState("#f9f9f7");
   const [tutorBgColor, setTutorBgColor] = useState("#f9f9f7");
@@ -21,22 +29,28 @@ function LoginSignUp() {
   const [selectedRole, setSelectedRole] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [otp, setOtp] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const [error, setError] = useState("");
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [showOtpInput, setShowOtpInput] = useState(false);
+  const [showNewPasswordInput, setShowNewPasswordInput] = useState(false);
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  // const functions = getFunctions();
+
   const handleStudentClick = () => {
-    return (
-      setSelectedRole("student"),
-      setStudentBgColor(studentBgColor === "#f9f9f7" ? "#F6CB52" : "#f9f9f7"),
-      setTutorBgColor("#f9f9f7")
-    );
+    setSelectedRole("student");
+    setStudentBgColor(studentBgColor === "#f9f9f7" ? "#F6CB52" : "#f9f9f7");
+    setTutorBgColor("#f9f9f7");
   };
+
   const handleTutorClick = () => {
-    return (
-      setSelectedRole("tutor"),
-      setTutorBgColor(tutorBgColor === "#f9f9f7" ? "#F6CB52" : "#f9f9f7"),
-      setStudentBgColor("#f9f9f7")
-    );
+    setSelectedRole("tutor");
+    setTutorBgColor(tutorBgColor === "#f9f9f7" ? "#F6CB52" : "#f9f9f7");
+    setStudentBgColor("#f9f9f7");
   };
+
   const handleContinueClick = () => {
     if (!selectedRole) {
       alert("Please select a role");
@@ -45,6 +59,7 @@ function LoginSignUp() {
     setCurrentDot(1);
     setShowLogin(true);
   };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -55,6 +70,61 @@ function LoginSignUp() {
       setError(err.message);
     }
   };
+
+  const handleForgotPasswordClick = () => {
+    setShowForgotPassword(true);
+  };
+
+  // Ensure this import is at the top of your file
+
+  const handleSendOtp = async (e) => {
+    e.preventDefault();
+
+    const sendOtpEmail = httpsCallable(functions, "sendOtpEmail");
+    console.log("Email:", email); // Log the email to debug
+    console.log("sendOtpEmail:", sendOtpEmail); // Log the function to debug
+
+    try {
+      const result = await sendOtpEmail({ email });
+      console.log("Function result:", result); // Log the result to debug
+
+      if (result.data && result.data.success) {
+        setMessage("OTP sent to your email");
+        setShowOtpInput(true);
+      } else {
+        console.error("Function error result:", result.data.error);
+        setError(result.data.error || "Unknown error");
+      }
+    } catch (err) {
+      console.error("Error calling sendOtpEmail:", err); // Log detailed error
+      setError(err.message || "Failed to send OTP");
+    }
+  };
+
+  // const handleVerifyOtp = async (e) => {
+  //   e.preventDefault();
+  //   const doc = await admin.firestore().collection("otps").doc(email).get();
+  //   if (doc.exists && doc.data().otp === otp) {
+  //     setShowNewPasswordInput(true);
+  //   } else {
+  //     setError("Invalid OTP");
+  //   }
+  // };
+
+  const handleNewPassword = async (e) => {
+    e.preventDefault();
+    const user = auth.currentUser;
+    try {
+      await updatePassword(user, newPassword);
+      setMessage("Password updated successfully");
+      setShowNewPasswordInput(false);
+      setShowForgotPassword(false);
+      setShowLogin(true);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
   return (
     <div className="mainContainer">
       <div className="leftContainer"></div>
@@ -65,39 +135,101 @@ function LoginSignUp() {
         </div>
         <div className="innerContainer">
           {showLogin ? (
-            <>
-              <span className="signin">Sign In</span>
-              <div className="inputContainer">
-                <img src={person} alt=""></img>
-                <input
-                  type="text"
-                  placeholder="Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="inputContainer">
-                <img src={lock} alt=""></img>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-                {/* <img className="eye" src={eye} alt=""></img> */}
-              </div>
+            showForgotPassword ? (
+              showNewPasswordInput ? (
+                <>
+                  <span className="signin">Set New Password</span>
+                  <div className="inputContainer">
+                    <img src={lock} alt=""></img>
+                    <input
+                      type="password"
+                      placeholder="New Password"
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="loginButton">
+                    <button onClick={handleNewPassword}>Update Password</button>
+                  </div>
+                  {message && <span className="message">{message}</span>}
+                </>
+              ) : showOtpInput ? (
+                <>
+                  <span className="signin">Verify OTP</span>
+                  <div className="inputContainer">
+                    <img src={person} alt=""></img>
+                    <input
+                      type="text"
+                      placeholder="Enter OTP"
+                      value={otp}
+                      onChange={(e) => setOtp(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="loginButton">
+                    <button>Verify OTP</button>
+                  </div>
+                  {message && <span className="message">{message}</span>}
+                </>
+              ) : (
+                <>
+                  <span className="signin">Forgot Password</span>
+                  <div className="inputContainer">
+                    <img src={person} alt=""></img>
+                    <input
+                      type="text"
+                      placeholder="Email Address"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="loginButton">
+                    <button onClick={handleSendOtp}>Send OTP</button>
+                  </div>
+                  {message && <span className="message">{message}</span>}
+                </>
+              )
+            ) : (
+              <>
+                <span className="signin">Sign In</span>
+                <div className="inputContainer">
+                  <img src={person} alt=""></img>
+                  <input
+                    type="text"
+                    placeholder="Email Address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="inputContainer">
+                  <img src={lock} alt=""></img>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                </div>
 
-              <span className="forgetPassword">Forgot Password?</span>
-              <div className="loginButton">
-                <button onClick={handleLogin}>Login</button>
-              </div>
+                <span
+                  className="forgetPassword"
+                  onClick={handleForgotPasswordClick}
+                >
+                  Forgot Password?
+                </span>
+                <div className="loginButton">
+                  <button onClick={handleLogin}>Login</button>
+                </div>
 
-              <div className="registration">
-                <span>NOT A STUDENT? REGISTER NOW!</span>
-              </div>
-            </>
+                <div className="registration">
+                  <span>NOT A STUDENT? REGISTER NOW!</span>
+                </div>
+              </>
+            )
           ) : (
             <>
               <p>Select Your Role</p>
