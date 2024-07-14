@@ -11,17 +11,17 @@ const DropDownMenu = ({ options, label }) => {
 
   return (
     <div className="dropdown-container">
-      <label htmlFor="district" className="dropdown-label">
+      <label htmlFor={label} className="dropdown-label">
         {label} <span className="required">*</span>
       </label>
       <div className="custom-select-wrapper">
         <select
-          id="district"
+          id={label}
           className="custom-select"
           value={selectedOption}
           onChange={handleChange}
         >
-          <option value="">--Select District--</option>
+          <option value="">--Select {label}--</option>
           {options.map((option, index) => (
             <option key={index} value={option.value}>
               {option.label}

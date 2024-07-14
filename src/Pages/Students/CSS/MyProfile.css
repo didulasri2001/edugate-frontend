@@ -48,6 +48,7 @@
   margin-bottom: 0.3rem;
 }
 .profImageDes button {
+  flex-direction: row;
   background-color: #f6cb52;
   color: black;
   border: none;
@@ -62,7 +63,7 @@
   display: flex;
   flex-direction: row;
 }
-.profiledetailsContainer button {
+.updateButton button {
   background-color: #f6cb52;
   color: black;
   border: none;

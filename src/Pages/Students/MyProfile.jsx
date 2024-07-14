@@ -13,6 +13,22 @@ function MyProfile() {
     { value: "matara", label: "Matara" },
     // Add more districts as needed
   ];
+  const optionsGender = [
+    { value: "Male", label: "Male" },
+    { value: "Female", label: "Female" },
+  ];
+  const optionsStream = [
+    { value: "Physical Science", label: "Physical Science" },
+    { value: "Biological Science", label: "Biological Science" },
+    { value: "Commerce", label: "Commerce" },
+    { value: "Technology", label: "Technology" },
+    { value: "Common", label: "Common" },
+  ];
+  const optionsYear = [
+    { value: "2025", label: "2025" },
+    { value: "2026", label: "2026" },
+    { value: "2027", label: "2027" },
+  ];
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -25,6 +41,21 @@ function MyProfile() {
   const [school, setSchool] = useState("");
   const [pName, setPName] = useState("");
   const [pNumber, setPNumber] = useState("");
+  const [profileImage, setProfileImage] = useState(personProfile);
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setProfileImage(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const triggerFileInput = () => {
+    document.getElementById("fileInput").click();
+  };
 
   return (
     <div className="profileCon">
@@ -35,10 +66,17 @@ function MyProfile() {
           <p>My Profile</p>
         </div>
         <div className="profImage">
-          <img src={personProfile} alt="Profile" />
+          <img src={profileImage} alt="Profile" />
           <div className="profImageDes">
             <p>Update Profile Image</p>
-            <button>+ Choose</button>
+            <button onClick={triggerFileInput}>+ Choose</button>
+            <input
+              type="file"
+              id="fileInput"
+              style={{ display: "none" }}
+              accept="image/*"
+              onChange={handleImageChange}
+            />
           </div>
           <InputBar
             label="First Name"
@@ -81,8 +119,9 @@ function MyProfile() {
               onChange={(e) => setNic(e.target.value)}
               required={true}
             />
-            <DropDownMenu options={options} label="District" />
-            <DropDownMenu options={options} label="District" />
+            <DropDownMenu options={options} label="Birthday" />
+
+            <DropDownMenu options={optionsGender} label="Gender" />
           </div>
           <div className="inputLine">
             <InputBar
@@ -106,8 +145,8 @@ function MyProfile() {
               onChange={(e) => setSchool(e.target.value)}
               required={true}
             />
-            <DropDownMenu options={options} label="District" />
-            <DropDownMenu options={options} label="District" />
+            <DropDownMenu options={optionsStream} label="Stream" />
+            <DropDownMenu options={optionsYear} label="AL Year" />
           </div>
           <div className="inputLine">
             <InputBar
@@ -123,7 +162,9 @@ function MyProfile() {
               required={true}
             />
           </div>
-          <button>Update Your profile</button>
+          <div className="updateButton">
+            <button>Update Your profile</button>
+          </div>
         </div>
       </div>
     </div>

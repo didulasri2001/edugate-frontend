@@ -1,0 +1,75 @@
+/* BirthdayPicker.css */
+.birthday-picker {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.birthday-input {
+  border: 1px solid #d4c381; /* Match the color from the image */
+  border-radius: 20px; /* Rounded corners */
+  padding: 5px 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.birthday-input::placeholder {
+  color: #aaa;
+}
+
+.birthday-picker label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #d4c381; /* Match the color from the image */
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #b5a569; /* Slightly darker shade for hover effect */
+}
+
+/* Custom styles for the date picker arrows */
+.react-datepicker__navigation--previous,
+.react-datepicker__navigation--next {
+  border: 1px solid #d4c381;
+  background-color: #d4c381; /* Match the color from the image */
+  border-radius: 50%; /* Make it circular */
+  width: 30px;
+  height: 30px;
+  top: 10px; /* Adjust position if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-datepicker__navigation--previous::before,
+.react-datepicker__navigation--next::before {
+  border-color: #fff;
+  content: ""; /* Ensure the pseudo-element is rendered */
+  border-width: 0.2rem 0.2rem 0 0;
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.react-datepicker__navigation--previous::before {
+  left: -2px; /* Adjust position if needed */
+  top: 1px; /* Adjust position if needed */
+}
+
+.react-datepicker__navigation--next::before {
+  right: -2px; /* Adjust position if needed */
+  top: 1px; /* Adjust position if needed */
+  transform: rotate(45deg) translateX(1px);
+}
