@@ -55,6 +55,11 @@ function LoginSignUp() {
       setError(err.message);
     }
   };
+
+  const handleRegister = () => {
+    navigate("/RegistationStudent"); // Redirect to dashboard
+  }
+
   return (
     <div className="mainContainer">
       <div className="leftContainer"></div>
@@ -95,7 +100,10 @@ function LoginSignUp() {
               </div>
 
               <div className="registration">
-                <span>NOT A STUDENT? REGISTER NOW!</span>
+                <span>
+                  <button
+                    onClick={handleRegister}>NOT A STUDENT? REGISTER NOW!</button></span>
+
               </div>
             </>
           ) : (
