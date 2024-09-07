@@ -4,6 +4,7 @@ import LoginSignUp from "./Pages/Students/LoginSignUp";
 import Dashboard from "./Pages/Students/Dashboard";
 import MyProfile from "./Pages/Students/MyProfile";
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<LoginSignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<MyProfile />} />
+
       </Routes>
     </BrowserRouter>
   );
