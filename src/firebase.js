@@ -1,5 +1,9 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import {
+  getAuth,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getFunctions } from "firebase/functions";
 const firebaseConfig = {
@@ -10,7 +14,7 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
-
+console.log(firebaseConfig);
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
@@ -20,4 +24,11 @@ const firestore = getFirestore(app);
 const functions = getFunctions(app);
 const db = getFirestore(app);
 
-export { auth, firestore, functions, db };
+export {
+  auth,
+  firestore,
+  functions,
+  db,
+  signInWithPhoneNumber,
+  RecaptchaVerifier,
+};

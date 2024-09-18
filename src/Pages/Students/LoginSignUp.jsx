@@ -15,6 +15,7 @@ import { auth } from "../../firebase";
 import { signInWithEmailAndPassword, updatePassword } from "firebase/auth";
 import { functions } from "../../firebase"; // Adjust the path according to your project structure
 import { httpsCallable } from "firebase/functions";
+import PhoneVerify from "../../Components/PhoneAuth/PhoneVerify";
 //
 // import admin from "firebase-admin"; // Import Firebase Admin SDK
 
@@ -176,14 +177,15 @@ function LoginSignUp() {
                 <>
                   <span className="signin">Forgot Password</span>
                   <div className="inputContainer">
-                    <img src={person} alt=""></img>
+                    {/* <img src={person} alt=""></img>
                     <input
                       type="text"
                       placeholder="Email Address"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                    />
+                    /> */}
+                    <PhoneVerify />
                   </div>
                   <div className="loginButton">
                     <button onClick={handleSendOtp}>Send OTP</button>
