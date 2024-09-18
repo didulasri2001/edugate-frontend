@@ -5,6 +5,7 @@ import Dashboard from "./Pages/Students/Dashboard";
 import MyProfile from "./Pages/Students/MyProfile";
 import PhoneVerify from "./Components/PhoneAuth/PhoneVerify";
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -12,7 +13,9 @@ function App() {
         <Route path="/" element={<LoginSignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<MyProfile />} />
+
         <Route path="/phoneVerify" element={<PhoneVerify />} />
+
       </Routes>
     </BrowserRouter>
   );
