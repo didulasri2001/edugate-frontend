@@ -21,14 +21,7 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase services
 const auth = getAuth(app);
 const firestore = getFirestore(app);
-const functions = getFunctions(app);
-const db = getFirestore(app);
 
-export {
-  auth,
-  firestore,
-  functions,
-  db,
-  signInWithPhoneNumber,
-  RecaptchaVerifier,
-};
+const db = getFirestore(app);
+export { auth, firestore, db, RecaptchaVerifier, signInWithPhoneNumber };
+
