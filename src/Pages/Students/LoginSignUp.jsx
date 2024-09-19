@@ -26,7 +26,7 @@ function LoginSignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [otp, setOtp] = useState("");
+
   const [newPassword, setNewPassword] = useState("");
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [showOtpInput, setShowOtpInput] = useState(false);
@@ -132,23 +132,7 @@ function LoginSignUp() {
                       {message && <span className="message">{message}</span>}
                     </>
                   ) : showOtpInput ? (
-                    <>
-                      <span className="signin">Verify OTP</span>
-                      <div className="inputContainer">
-                        <img src={person} alt=""></img>
-                        <input
-                          type="text"
-                          placeholder="Enter OTP"
-                          value={otp}
-                          onChange={(e) => setOtp(e.target.value)}
-                          required
-                        />
-                      </div>
-                      <div className="loginButton">
-                        <button>Verify OTP</button>
-                      </div>
-                      {message && <span className="message">{message}</span>}
-                    </>
+                    <></>
                   ) : (
                     <>
                       <span className="signin">Forgot Password</span>
