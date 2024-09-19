@@ -13,8 +13,7 @@ import lock from "../../Components/Assets/lock.png";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword, updatePassword } from "firebase/auth";
-import { functions } from "../../firebase"; // Adjust the path according to your project structure
-import { httpsCallable } from "firebase/functions";
+
 import PhoneVerify from "../../Components/PhoneAuth/PhoneVerify";
 //
 // import admin from "firebase-admin"; // Import Firebase Admin SDK
@@ -78,29 +77,29 @@ function LoginSignUp() {
 
   // Ensure this import is at the top of your file
 
-  const handleSendOtp = async (e) => {
-    e.preventDefault();
+  // const handleSendOtp = async (e) => {
+  //   e.preventDefault();
 
-    const sendOtpEmail = httpsCallable(functions, "sendOtpEmail");
-    console.log("Email:", email); // Log the email to debug
-    console.log("sendOtpEmail:", sendOtpEmail); // Log the function to debug
+  //   const sendOtpEmail = httpsCallable(functions, "sendOtpEmail");
+  //   console.log("Email:", email); // Log the email to debug
+  //   console.log("sendOtpEmail:", sendOtpEmail); // Log the function to debug
 
-    try {
-      const result = await sendOtpEmail({ email });
-      console.log("Function result:", result); // Log the result to debug
+  //   try {
+  //     const result = await sendOtpEmail({ email });
+  //     console.log("Function result:", result); // Log the result to debug
 
-      if (result.data && result.data.success) {
-        setMessage("OTP sent to your email");
-        setShowOtpInput(true);
-      } else {
-        console.error("Function error result:", result.data.error);
-        setError(result.data.error || "Unknown error");
-      }
-    } catch (err) {
-      console.error("Error calling sendOtpEmail:", err); // Log detailed error
-      setError(err.message || "Failed to send OTP");
-    }
-  };
+  //     if (result.data && result.data.success) {
+  //       setMessage("OTP sent to your email");
+  //       setShowOtpInput(true);
+  //     } else {
+  //       console.error("Function error result:", result.data.error);
+  //       setError(result.data.error || "Unknown error");
+  //     }
+  //   } catch (err) {
+  //     console.error("Error calling sendOtpEmail:", err); // Log detailed error
+  //     setError(err.message || "Failed to send OTP");
+  //   }
+  // };
 
   // const handleVerifyOtp = async (e) => {
   //   e.preventDefault();
@@ -187,10 +186,10 @@ function LoginSignUp() {
                     /> */}
                     <PhoneVerify />
                   </div>
-                  <div className="loginButton">
+                  {/* <div className="loginButton">
                     <button onClick={handleSendOtp}>Send OTP</button>
                   </div>
-                  {message && <span className="message">{message}</span>}
+                  {message && <span className="message">{message}</span>} */}
                 </>
               )
             ) : (
