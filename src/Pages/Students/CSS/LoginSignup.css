@@ -6,12 +6,16 @@
   width: "100%";
   overflow: hidden;
 }
+
+
+
 .leftContainer {
   flex: 1;
 
   justify-content: center;
   align-items: center;
 }
+
 .rightContainer {
   flex: 1;
 
@@ -20,26 +24,31 @@
 
   border-radius: 30px;
 }
+
 .logoContainer {
   margin-top: -1rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .logoContainer img {
   width: 21.313rem;
   height: 12.438rem;
 }
+
 .buttonContainer {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .innerContainer p {
   font-size: 1rem;
   font-weight: 400;
   margin-left: 8rem;
 }
+
 .role {
   display: flex;
   flex-direction: column;
@@ -56,16 +65,19 @@
   padding: 0.5rem 1rem;
   margin: 1rem;
 }
+
 .role img {
   margin-top: -0.5rem;
   margin-bottom: 1rem;
 }
+
 .continue {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 3.98rem;
 }
+
 .continue button {
   background-color: #f6cb52;
   color: #000000;
@@ -77,12 +89,14 @@
   cursor: pointer;
   margin-top: 1.5rem;
 }
+
 .dotts {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 1.2rem;
 }
+
 .dotts span {
   width: 0.6rem;
   height: 0.6rem;
@@ -90,23 +104,27 @@
   border-radius: 50%;
   margin: 0.3rem;
 }
+
 .socials {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 1.25rem;
 }
+
 .socials img {
   width: 1.5rem;
   height: 1.5rem;
   margin: 0.5rem;
 }
+
 .footer {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 0.25rem;
 }
+
 .footer span {
   font-size: 0.8rem;
   font-weight: 400;
@@ -119,12 +137,14 @@
   justify-content: center;
   align-items: center;
 }
+
 .signin {
   margin-left: 6rem;
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
 }
+
 .inputContainer input {
   background-color: #f9f9f7;
   font-size: 1.25rem;
@@ -139,6 +159,7 @@
   margin-bottom: 0.25rem;
   margin-right: 1rem;
 }
+
 .inputContainer img {
   position: absolute;
 
@@ -156,6 +177,7 @@
   width: 1.5rem;
   height: 1.5rem;
 }
+
 .forgetPassword {
   margin-left: 23.5rem;
   margin-top: 1rem;
@@ -163,12 +185,14 @@
   width: 1.5rem;
   height: 1.5rem;
 }
+
 .loginButton {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
 }
+
 .loginButton button {
   background-color: #f6cb52;
   color: #000000;
@@ -179,6 +203,7 @@
   font-weight: 400;
   cursor: pointer;
 }
+
 .registration {
   width: 16rem;
   height: 1rem;
@@ -192,6 +217,7 @@
   margin-left: 6.3rem;
   cursor: pointer;
 }
+
 .registration span {
   font-family: poppins;
 }

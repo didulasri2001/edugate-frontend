@@ -18,8 +18,12 @@
     "express": "^4.19.2",
     "firebase": "^10.12.3",
     "firebase-admin": "^12.2.0",
+
     "firebase-functions": "^5.0.1",
     "nodemailer": "^6.9.14",
+
+    "levenary": "^1.1.1",
+
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
     "react-calendar": "^5.0.0",
