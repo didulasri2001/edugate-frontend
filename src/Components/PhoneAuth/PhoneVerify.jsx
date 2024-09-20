@@ -1,69 +1,68 @@
-import React, { useState } from "react";
-import { Button } from "react-bootstrap";
-import { Form, Alert } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Button, Form, Alert } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 import { auth, RecaptchaVerifier, signInWithPhoneNumber } from "../../firebase";
-
-// import { auth } from "../../firebase";
+import { set } from "date-fns";
 
 function PhoneVerify() {
   const [error, setError] = useState("");
   const [number, setNumber] = useState("");
   const [flag, setFlag] = useState(false);
   const [otp, setOtp] = useState("");
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState(null);
   const navigate = useNavigate();
 
-  const getOtp = async (e) => {
-    e.preventDefault();
-    console.log(number);
-    setError("");
-    if (number === "" || number === undefined)
-      return setError("Please enter a valid phone number!");
-    try {
-      if (window.recaptchaVerifier) {
-        window.recaptchaVerifier.clear();
-      }
-      const response = (window.recaptchaVerifier = new RecaptchaVerifier(
-        auth,
-        "recaptcha-container",
+  // Initialize ReCaptcha only once when component mounts
+  // useEffect(() => {
+  //   initializeRecaptcha();
+  // }, []);
+
+  const initializeRecaptcha = () => {
+    if (!window.recaptchaVerifier) {
+      window.recaptchaVerifier = new RecaptchaVerifier(
+        "recaptcha-container", // Make sure this ID matches the div in the render
         {
           size: "invisible",
           callback: (response) => {
-            console.log("Recaptcha solved!");
-            // reCAPTCHA solved, allow signInWithPhoneNumber.
-            // ...
+            console.log("ReCAPTCHA solved!");
+            getOtp();
           },
           "expired-callback": () => {
-            console.log("Recaptcha expired!");
-            // Response expired. Ask user to solve reCAPTCHA again.
-            // ...
+            console.log("ReCAPTCHA expired!");
           },
-        }
-      ));
+        },
+        auth
+      );
+    }
+  };
 
-      window.recaptchaVerifier.render();
-      //     return signInWithPhoneNumber(auth, number, recaptchaVerifier);
-      console.log(response);
+  const getOtp = async (e) => {
+    initializeRecaptcha(); // Reinitialize ReCaptcha before sending OTP
+    e.preventDefault();
+    setError("");
+    if (!number) return setError("Please enter a valid phone number!");
 
-      setResult(response);
-      setFlag(true);
-      console.log(number);
-
-      signInWithPhoneNumber(auth, number, window.recaptchaVerifier)
-        .then((confirmationResult) => {
-          // SMS sent. Prompt user to type the code from the message, then sign the
-          // user in with confirmationResult.confirm(code).
-
+    try {
+      const appVerifier = window.recaptchaVerifier;
+      signInWithPhoneNumber(auth, number, appVerifier).then(
+        (confirmationResult) => {
           window.confirmationResult = confirmationResult;
-          console.log(confirmationResult);
-          // ...
-        })
-        .catch((error) => {
-          // Error; SMS not sent
-          // ...
-        });
+          setFlag(true);
+          setResult(confirmationResult);
+          console.log("OTP sent successfully!");
+        }
+      );
+
+      // // Send OTP
+      // const confirmationResult = await signInWithPhoneNumber(
+      //   auth,
+      //   number,
+      //   appVerifier
+      // );
+      // setResult(confirmationResult); // Store confirmationResult in state
+      // setFlag(true); // Show OTP input
+      // console.log("OTP sent successfully!");
     } catch (err) {
       setError(err.message);
     }
@@ -72,10 +71,13 @@ function PhoneVerify() {
   const verifyOtp = async (e) => {
     e.preventDefault();
     setError("");
-    if (otp === "" || otp === null) return;
+    if (!otp) return setError("Please enter the OTP!");
+
     try {
-      await result.confirm(otp);
-      navigate("/home");
+      if (!result)
+        throw new Error("OTP not sent! Please request the OTP again.");
+      await result.confirm(otp); // Use confirmationResult to verify OTP
+      navigate("/home"); // Navigate to home on successful OTP verification
     } catch (err) {
       setError(err.message);
     }
@@ -93,14 +95,8 @@ function PhoneVerify() {
               onChange={setNumber}
               placeholder="Enter Phone Number"
             />
-            {/* <PhoneInput
-              international
-              defaultCountry="IN"
-              value={number}
-              onChange={(phone) => setNumber(phone)}
-              placeholder="Enter Phone Number"
-            /> */}
-            <div id="recaptcha-container"></div>
+            <div id="recaptcha-container"></div>{" "}
+            {/* Ensure the container exists */}
           </Form.Group>
           <div className="button-right">
             <Link to="/">
@@ -108,7 +104,7 @@ function PhoneVerify() {
             </Link>
             &nbsp;
             <Button type="submit" variant="primary">
-              Send Otp
+              Send OTP
             </Button>
           </div>
         </Form>
@@ -127,7 +123,7 @@ function PhoneVerify() {
             </Link>
             &nbsp;
             <Button type="submit" variant="primary">
-              Verify
+              Verify OTP
             </Button>
           </div>
         </Form>
