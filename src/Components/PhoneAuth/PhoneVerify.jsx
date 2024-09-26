@@ -47,7 +47,7 @@ const PhoneVerify = () => {
     }
 
     try {
-      const response = await axios.post(`${basurl}/verify-otp`, {
+      const response = await axios.post(`${basurl}/verify-email-otp`, {
         email,
         enteredOtp: otp,
       });
