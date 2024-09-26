@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form, Alert } from "react-bootstrap";
 import axios from "axios";
-const basurl = "http://localhost:3000/api";
+const basurl = "http://localhost:3001/api";
 
 const PhoneVerify = () => {
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -16,14 +16,12 @@ const PhoneVerify = () => {
     setError("");
     setSuccess("");
 
-    if (!phoneNumber || phoneNumber.length < 10) {
-      setError("Please enter a valid phone number.");
-      return;
-    }
-    console.log(phoneNumber);
+    console.log(email);
 
     try {
-      const response = await axios.post(`${basurl}/send-otp`, { phoneNumber });
+      const response = await axios.post(`${basurl}/send-email-otp`, {
+        email,
+      });
       if (response.data.success) {
         setSuccess("OTP sent successfully!");
         setIsOtpSent(true);
@@ -50,11 +48,11 @@ const PhoneVerify = () => {
 
     try {
       const response = await axios.post(`${basurl}/verify-otp`, {
-        phoneNumber,
+        email,
         enteredOtp: otp,
       });
       if (response.data.success) {
-        setSuccess("Phone number verified successfully!");
+        setSuccess("email verified successfully!");
       } else {
         setError("Invalid OTP. Please try again.");
       }
@@ -78,8 +76,8 @@ const PhoneVerify = () => {
             <Form.Control
               type="text"
               placeholder="Enter phone number"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
           <Button type="submit" variant="primary">
@@ -107,3 +105,4 @@ const PhoneVerify = () => {
 };
 
 export default PhoneVerify;
+///gasd nfxn uwwo tgvl
