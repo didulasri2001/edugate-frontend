@@ -137,14 +137,6 @@ function LoginSignUp() {
                     <>
                       <span className="signin">Forgot Password</span>
                       <div className="inputContainer">
-                        {/* <img src={person} alt=""></img>
-                        <input
-                          type="text"
-                          placeholder="Email Address"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          required
-                        /> */}
                         <PhoneVerify />
                       </div>
                     </>
