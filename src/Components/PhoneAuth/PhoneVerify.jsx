@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+import { OtpInput } from "reactjs-otp-input";
 import { Button, Form, Alert } from "react-bootstrap";
 import axios from "axios";
 const basurl = "http://localhost:3001/api";
@@ -36,8 +38,7 @@ const PhoneVerify = () => {
   };
 
   // Handle verifying OTP
-  const verifyOtp = async (e) => {
-    e.preventDefault();
+  const verifyOtp = async () => {
     setError("");
     setSuccess("");
 
@@ -75,7 +76,7 @@ const PhoneVerify = () => {
             <Form.Label>Phone Number</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter phone number"
+              placeholder="Enter Your Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -88,11 +89,24 @@ const PhoneVerify = () => {
         <Form onSubmit={verifyOtp}>
           <Form.Group className="mb-3">
             <Form.Label>Enter OTP</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter the OTP"
+
+            <OtpInput
               value={otp}
-              onChange={(e) => setOtp(e.target.value)}
+              onChange={setOtp}
+              numInputs={6}
+              inputStyle={{
+                width: "40px", // Adjust input box width
+                height: "40px", // Adjust input box height
+                fontSize: "14px", // Adjust font size for smaller inputs
+                borderRadius: "8px", // Optional: rounded corners
+                border: "1px solid gray", // Custom border style
+                padding: "5px",
+              }}
+              containerStyle={{
+                display: "flex",
+                justifyContent: "space-between",
+                gap: "5px", // Space between input boxes
+              }}
             />
           </Form.Group>
           <Button type="submit" variant="primary">
