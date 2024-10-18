@@ -11,10 +11,11 @@ import whatsapp from "../../Components/Assets/whatsapp.png";
 import person from "../../Components/Assets/person.png";
 import lock from "../../Components/Assets/lock.png";
 import RegContent from "../../Components/RegContent/RegContent";
-import PhoneVerify from "../../Components/PhoneAuth/PhoneVerify";
+
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword, updatePassword } from "firebase/auth";
+import EmailVerify from "../../Components/EmailAuth/EmailVerify";
 function LoginSignUp() {
   const [studentBgColor, setStudentBgColor] = useState("#f9f9f7");
   const [tutorBgColor, setTutorBgColor] = useState("#f9f9f7");
@@ -135,9 +136,8 @@ function LoginSignUp() {
                     <></>
                   ) : (
                     <>
-                      <span className="signin">Forgot Password</span>
                       <div className="inputContainer">
-                        <PhoneVerify />
+                        <EmailVerify />
                       </div>
                     </>
                   )
