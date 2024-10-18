@@ -30,18 +30,18 @@
 
 .veriCon {
   display: flex;
-  flex-direction: column; /* Stack the image and text vertically */
-  align-items: center; /* Center them horizontally */
-  justify-content: center; /* Center them vertically */
-  text-align: center; /* Ensure the text is centered */
-  width: 100%; /* Make sure the container takes up the full width */
-  gap: 10px; /* Add space between the image and text */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  gap: 10px;
 }
 
 .veriImg {
   margin-left: 2rem;
-  width: 100px; /* Adjust the image size as needed */
-  height: auto; /* Maintain aspect ratio */
+  width: 100px;
+  height: auto;
 }
 
 .verification {
@@ -54,5 +54,11 @@
   font-size: 1rem;
   font-weight: 400;
   color: #666; /* Adjust the color for a lighter look */
+  margin-top: 0.5rem;
+}
+.changePassword {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
   margin-top: 0.5rem;
 }

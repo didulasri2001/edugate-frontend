@@ -137,7 +137,9 @@ function LoginSignUp() {
                   ) : (
                     <>
                       <div className="inputContainer">
-                        <EmailVerify />
+                        <EmailVerify
+                          setShowNewPasswordInput={setShowNewPasswordInput}
+                        />
                       </div>
                     </>
                   )

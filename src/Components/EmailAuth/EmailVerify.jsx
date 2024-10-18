@@ -4,14 +4,19 @@ import { OtpInput } from "reactjs-otp-input";
 import { Button, Form, Alert } from "react-bootstrap";
 import axios from "axios";
 import verify from "../Assets/verify.png";
+import lock from "../Assets/lock.png"; // Import lock icon if needed
+
 const basurl = "http://localhost:3001/api";
 
-const EmailVerify = () => {
+const EmailVerify = ({ setShowNewPasswordInput }) => {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
+  const [newPassword, setNewPassword] = useState(""); // State for new password
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
+  const [showNewPasswordInput, setShowNewPasswordInputLocal] = useState(false);
+  const [message, setMessage] = useState("");
 
   // Handle sending OTP
   const sendOtp = async (e) => {
@@ -19,12 +24,8 @@ const EmailVerify = () => {
     setError("");
     setSuccess("");
 
-    console.log(email);
-
     try {
-      const response = await axios.post(`${basurl}/send-email-otp`, {
-        email,
-      });
+      const response = await axios.post(`${basurl}/send-email-otp`, { email });
       if (response.data.success) {
         setSuccess("OTP sent successfully!");
         setIsOtpSent(true);
@@ -39,7 +40,8 @@ const EmailVerify = () => {
   };
 
   // Handle verifying OTP
-  const verifyOtp = async () => {
+  const verifyOtp = async (e) => {
+    e.preventDefault();
     setError("");
     setSuccess("");
 
@@ -54,9 +56,33 @@ const EmailVerify = () => {
         enteredOtp: otp,
       });
       if (response.data.success) {
-        setSuccess("email verified successfully!");
+        setSuccess("Email verified successfully!");
+        setShowNewPasswordInputLocal(true); // Show new password input
       } else {
         setError("Invalid OTP. Please try again.");
+      }
+    } catch (err) {
+      setError(
+        err.response?.data?.message || "An error occurred. Please try again."
+      );
+    }
+  };
+
+  // Handle updating the password
+  const handleNewPassword = async (e) => {
+    e.preventDefault();
+    try {
+      // Logic to update the password (e.g., through your API)
+      // Assuming an endpoint exists for this, make an API call here
+      const response = await axios.post(`${basurl}/update-password`, {
+        email,
+        newPassword,
+      });
+      if (response.data.success) {
+        setMessage("Password updated successfully");
+        setShowNewPasswordInputLocal(false); // Hide password input
+      } else {
+        setError("Failed to update password. Try again.");
       }
     } catch (err) {
       setError(
@@ -71,7 +97,7 @@ const EmailVerify = () => {
       {success && <Alert variant="success">{success}</Alert>}
 
       {/* Send OTP Form */}
-      {!isOtpSent ? (
+      {!isOtpSent && !showNewPasswordInput ? (
         <>
           <span className="forgetPasswords">Forgot Password</span>
           <Form onSubmit={sendOtp}>
@@ -84,16 +110,15 @@ const EmailVerify = () => {
               />
             </Form.Group>
             <div className="otpButtonCon">
-              <Button type="submit" variant="primary" className="otpButton ">
+              <Button type="submit" variant="primary" className="otpButton">
                 Send OTP
               </Button>
             </div>
           </Form>
         </>
-      ) : (
+      ) : !showNewPasswordInput ? (
         <>
           <div className="veriCon">
-            {/* <img src={verify} alt="verification" className="veriImg" /> */}
             <span className="verification">Verification</span>
             <span className="otpInstructions">
               We will send you a One Time Password (OTP) on your email address.
@@ -122,12 +147,40 @@ const EmailVerify = () => {
                 />
               </Form.Group>
               <div className="otpButtonCon">
-                <Button type="submit" variant="primary" className="otpButton ">
+                <Button type="submit" variant="primary" className="otpButton">
                   Verify OTP
                 </Button>
               </div>
             </Form>
           </div>
+        </>
+      ) : (
+        <>
+          <span className="changePassword">Change Password</span>
+          <div className="inputContainer">
+            <img src={lock} alt="lock icon" />
+            <input
+              type="password"
+              placeholder="New Password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className="inputContainer">
+            <img src={lock} alt="lock icon" />
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className="loginButton">
+            <button onClick={handleNewPassword}>Update Password</button>
+          </div>
+          {message && <span className="message">{message}</span>}
         </>
       )}
     </div>
@@ -135,4 +188,3 @@ const EmailVerify = () => {
 };
 
 export default EmailVerify;
-///gasd nfxn uwwo tgvl
