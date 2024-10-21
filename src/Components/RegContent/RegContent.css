@@ -1,52 +1,51 @@
 .regContainer {
-   margin: 1.2rem 2rem 1.2rem 2rem;
-   width: 1784px;
-   height: auto;
-   background-color: #F9F9F7;
-   border-radius: 1.5rem;
+  margin: 1.2rem 2rem 1.2rem 2rem;
+  width: 1784px;
+  height: auto;
+  background-color: #f9f9f7;
+  border-radius: 1.5rem;
 }
 
 .regLogoContainer {
-   margin-top: -1rem;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  margin-top: -1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .regLogoContainer img {
-   width: 20.313rem;
-   height: 11.438rem;
+  width: 20.313rem;
+  height: 11.438rem;
 }
 
 .inputBox {
-   display: flex;
-   flex-direction: row;
-   justify-content: space-around;
-   margin: 0.5rem 4rem 0.5rem 4rem
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0.5rem 4rem 0.5rem 4rem;
 }
 
 .signup {
-   margin-left: 12rem;
-   font-size: 2rem;
-   font-weight: 700;
-   margin-bottom: 1rem;
+  margin-left: 12rem;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .register {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .register button {
-   background-color: #f6cb52;
-   color: #000000;
-   border: none;
-   border-radius: 25px;
-   padding: 0.75rem 4rem;
-   font-size: 1.5rem;
-   font-weight: 400;
-   cursor: pointer;
-   margin-top: 1.25rem;
+  background-color: #f6cb52;
+  color: #000000;
+  border: none;
+  border-radius: 25px;
+  padding: 0.75rem 4rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  cursor: pointer;
+  margin-top: 1.25rem;
 }

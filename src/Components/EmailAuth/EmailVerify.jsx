@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import "./EmailVerify.css";
+
 import { OtpInput } from "reactjs-otp-input";
 import { Button, Form, Alert } from "react-bootstrap";
 import axios from "axios";
-import verify from "../Assets/verify.png";
+
 import lock from "../Assets/lock.png"; // Import lock icon if needed
 
 const basurl = "http://localhost:3001/api";
 
-const EmailVerify = ({ setShowNewPasswordInput }) => {
+const EmailVerify = () => {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState(""); // State for new password
@@ -71,13 +72,13 @@ const EmailVerify = ({ setShowNewPasswordInput }) => {
   // Handle updating the password
   const handleNewPassword = async (e) => {
     e.preventDefault();
+    console.log(email, newPassword);
     try {
-      // Logic to update the password (e.g., through your API)
-      // Assuming an endpoint exists for this, make an API call here
-      const response = await axios.post(`${basurl}/update-password`, {
+      const response = await axios.put(`${basurl}/updatePassword`, {
         email,
         newPassword,
       });
+      console.log(response.data);
       if (response.data.success) {
         setMessage("Password updated successfully");
         setShowNewPasswordInputLocal(false); // Hide password input
@@ -85,6 +86,7 @@ const EmailVerify = ({ setShowNewPasswordInput }) => {
         setError("Failed to update password. Try again.");
       }
     } catch (err) {
+      console.error("Error in Axios request:", err);
       setError(
         err.response?.data?.message || "An error occurred. Please try again."
       );
@@ -167,7 +169,7 @@ const EmailVerify = ({ setShowNewPasswordInput }) => {
               required
             />
           </div>
-          <div className="inputContainer">
+          {/* <div className="inputContainer">
             <img src={lock} alt="lock icon" />
             <input
               type="password"
@@ -176,7 +178,7 @@ const EmailVerify = ({ setShowNewPasswordInput }) => {
               onChange={(e) => setNewPassword(e.target.value)}
               required
             />
-          </div>
+          </div> */}
           <div className="loginButton">
             <button onClick={handleNewPassword}>Update Password</button>
           </div>
