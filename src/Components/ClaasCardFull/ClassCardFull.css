@@ -1,0 +1,53 @@
+.cardFull {
+  display: flex;
+  flex-direction: row;
+  width: 36rem;
+  height: 8rem;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+.imgContainer img {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin-top: 1rem;
+}
+.classDescription {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+.classDescription span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: poppins;
+  margin-left: 1rem;
+}
+.classDescription p {
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-family: poppins;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+.enrollClass {
+  display: flex;
+}
+.enrollClass button {
+  background-color: #f6cb52;
+  color: #000000;
+  border: none;
+  border-radius: 30px;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  cursor: pointer;
+  margin-left: 1rem;
+}
