@@ -5,6 +5,7 @@ import Dashboard from "./Pages/Students/Dashboard";
 import MyProfile from "./Pages/Students/MyProfile";
 
 import EmailVerify from "./Components/EmailAuth/EmailVerify";
+import Courses from "./Pages/Students/Courses";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<MyProfile />} />
         <Route path="/emailVerify" element={<EmailVerify />} />
+        <Route path="/courses" element={<Courses />} />
       </Routes>
     </BrowserRouter>
   );

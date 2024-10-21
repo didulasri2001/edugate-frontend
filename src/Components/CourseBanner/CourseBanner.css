@@ -1,0 +1,15 @@
+.coursebanner {
+  display: flex;
+  flex-direction: column;
+  width: 55rem;
+  height: 3rem;
+  background: linear-gradient(to right, #7fb4d7, #f6cb52);
+  margin-left: 0.8rem;
+  border-radius: 10px;
+}
+.coursebanner p {
+  margin-left: 2rem;
+  margin-top: 1.4rem;
+  font-family: poppins;
+  color: #f9f9f7;
+}

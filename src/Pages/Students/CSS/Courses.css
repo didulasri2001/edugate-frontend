@@ -1,0 +1,14 @@
+.coursesEnrollment {
+  display: flex;
+  background-color: #f9f9f7;
+  height: 100vh;
+}
+.course-right {
+  display: flex;
+  flex-direction: column;
+}
+.filters {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+}
