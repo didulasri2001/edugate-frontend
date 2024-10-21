@@ -3,7 +3,8 @@ import "./App.css";
 import LoginSignUp from "./Pages/Students/LoginSignUp";
 import Dashboard from "./Pages/Students/Dashboard";
 import MyProfile from "./Pages/Students/MyProfile";
-import PhoneVerify from "./Components/PhoneAuth/PhoneVerify";
+
+import EmailVerify from "./Components/EmailAuth/EmailVerify";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <Route path="/" element={<LoginSignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<MyProfile />} />
-        <Route path="/phoneVerify" element={<PhoneVerify />} />
+        <Route path="/emailVerify" element={<EmailVerify />} />
       </Routes>
     </BrowserRouter>
   );

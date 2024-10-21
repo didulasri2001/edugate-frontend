@@ -11,10 +11,11 @@ import whatsapp from "../../Components/Assets/whatsapp.png";
 import person from "../../Components/Assets/person.png";
 import lock from "../../Components/Assets/lock.png";
 import RegContent from "../../Components/RegContent/RegContent";
-import PhoneVerify from "../../Components/PhoneAuth/PhoneVerify";
+
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword, updatePassword } from "firebase/auth";
+import EmailVerify from "../../Components/EmailAuth/EmailVerify";
 function LoginSignUp() {
   const [studentBgColor, setStudentBgColor] = useState("#f9f9f7");
   const [tutorBgColor, setTutorBgColor] = useState("#f9f9f7");
@@ -74,19 +75,7 @@ function LoginSignUp() {
     setShowRightContainer(false);
     setCurrentDot(2);
   };
-  const handleNewPassword = async (e) => {
-    e.preventDefault();
-    const user = auth.currentUser;
-    try {
-      await updatePassword(user, newPassword);
-      setMessage("Password updated successfully");
-      setShowNewPasswordInput(false);
-      setShowForgotPassword(false);
-      setShowLogin(true);
-    } catch (err) {
-      setError(err.message);
-    }
-  };
+
   const handleForgotPasswordClick = () => {
     setShowForgotPassword(true);
   };
@@ -113,7 +102,7 @@ function LoginSignUp() {
                 showForgotPassword ? (
                   showNewPasswordInput ? (
                     <>
-                      <span className="signin">Set New Password</span>
+                      {/* <span className="signin">Set New Password</span>
                       <div className="inputContainer">
                         <img src={lock} alt=""></img>
                         <input
@@ -129,64 +118,57 @@ function LoginSignUp() {
                           Update Password
                         </button>
                       </div>
-                      {message && <span className="message">{message}</span>}
+                      {message && <span className="message">{message}</span>} */}
                     </>
                   ) : showOtpInput ? (
                     <></>
                   ) : (
                     <>
-                      <span className="signin">Forgot Password</span>
                       <div className="inputContainer">
-                        {/* <img src={person} alt=""></img>
+                        <EmailVerify />
+                      </div>
+                    </>
+                  )
+                ) : (
+                  <>
+                    <div className="signInCon">
+                      <span className="signin">Sign In</span>
+                      <div className="inputContainer">
+                        <img src={person} alt=""></img>
                         <input
                           type="text"
                           placeholder="Email Address"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           required
-                        /> */}
-                        <PhoneVerify />
+                        />
                       </div>
-                    </>
-                  )
-                ) : (
-                  <>
-                    <span className="signin">Sign In</span>
-                    <div className="inputContainer">
-                      <img src={person} alt=""></img>
-                      <input
-                        type="text"
-                        placeholder="Email Address"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                      />
-                    </div>
-                    <div className="inputContainer">
-                      <img src={lock} alt=""></img>
-                      <input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                      />
-                    </div>
+                      <div className="inputContainer">
+                        <img src={lock} alt=""></img>
+                        <input
+                          type="password"
+                          placeholder="Password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          required
+                        />
+                      </div>
 
-                    <span
-                      className="forgetPassword"
-                      onClick={handleForgotPasswordClick}
-                    >
-                      Forgot Password?
-                    </span>
-                    <div className="loginButton">
-                      <button onClick={handleLogin}>Login</button>
-                    </div>
-
-                    <div className="registration">
-                      <span onClick={handleRegister}>
-                        NOT A STUDENT? REGISTER NOW!
+                      <span
+                        className="forgetPassword"
+                        onClick={handleForgotPasswordClick}
+                      >
+                        Forgot Password?
                       </span>
+                      <div className="loginButton">
+                        <button onClick={handleLogin}>Login</button>
+                      </div>
+
+                      <div className="registration">
+                        <span onClick={handleRegister}>
+                          NOT A STUDENT? REGISTER NOW!
+                        </span>
+                      </div>
                     </div>
                   </>
                 )

@@ -1,0 +1,64 @@
+.otpButtonCon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.otpButton {
+  margin-bottom: 1.98rem;
+  background-color: #f6cb52;
+  color: #000000;
+  border: none;
+  border-radius: 30px;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+  margin-top: 1.5rem;
+}
+.forgetPasswords {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.otpForm {
+  display: flex;
+  margin-top: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.veriCon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.veriImg {
+  margin-left: 2rem;
+  width: 100px;
+  height: auto;
+}
+
+.verification {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.otpInstructions {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #666; /* Adjust the color for a lighter look */
+  margin-top: 0.5rem;
+}
+.changePassword {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}

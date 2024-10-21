@@ -7,8 +7,6 @@
   overflow: hidden;
 }
 
-
-
 .leftContainer {
   flex: 1;
 
@@ -75,7 +73,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 3.98rem;
+  margin-bottom: 1.98rem;
 }
 
 .continue button {
@@ -220,4 +218,7 @@
 
 .registration span {
   font-family: poppins;
+}
+.signInCon {
+  margin-top: -1.9rem;
 }
